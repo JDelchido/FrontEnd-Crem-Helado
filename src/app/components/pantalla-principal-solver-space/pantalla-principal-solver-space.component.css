@@ -1,0 +1,148 @@
+:host {
+  display: block;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Header Styles */
+.header-section {
+  text-align: center;
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 1rem;
+  margin-bottom: 3rem;
+}
+
+.title {
+  color: #0056b3;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  color: #6c757d;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+/* Button Styles */
+.cta-button,
+.primary-button {
+  position: relative;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.button-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover .button-hover,
+.primary-button:hover .button-hover {
+  transform: translateX(0);
+}
+
+/* Grid Layouts */
+.features-grid,
+.workers-grid,
+.rewards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+/* Card Styles */
+.feature-card,
+.worker-card,
+.reward-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.feature-icon,
+.worker-photo,
+.reward-image {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Floating Action Button */
+.fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  z-index: 1000;
+}
+
+.fab:hover {
+  background-color: #004494;
+}
+
+/* Section Styles */
+.workers-section,
+.rewards-section,
+.cta-section {
+  margin: 4rem 0;
+  text-align: center;
+}
+
+h2 {
+  color: #0056b3;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .features-grid,
+  .workers-grid,
+  .rewards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header-section {
+    padding: 2rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+}
