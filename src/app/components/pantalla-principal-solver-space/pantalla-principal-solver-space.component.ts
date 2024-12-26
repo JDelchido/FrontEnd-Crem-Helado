@@ -54,9 +54,23 @@ export class PantallaPrincipalSolverSpaceComponent implements OnInit {
   constructor(private homeService: HomeService) {}
 
   ngOnInit(): void {
-    this.loadChallenges();
-    this.loadUsers();
+    this.workerName = 'Nombre del Trabajador';
+
+    this.challenges = [
+      { id: 1, title: 'Reto 1', description: 'Descripción del reto 1' },
+      { id: 2, title: 'Reto 2', description: 'Descripción del reto 2' },
+      { id: 3, title: 'Reto 3', description: 'Descripción del reto 3' },
+    ];
+  /*
+    this.workers = [
+      { photo: 'assets/photos/juan-perez.jpg', name: 'Juan Pérez', position: 'Director de Innovación' },
+      { photo: 'assets/photos/maria-lopez.jpg', name: 'María López', position: 'Analista Senior' },
+      { photo: 'assets/photos/carlos-gomez.jpg', name: 'Carlos Gómez', position: 'Ingeniero de Proyectos' },
+      { photo: 'assets/photos/ana-torres.jpg', name: 'Ana Torres', position: 'Gestora de Innovación' },
+      { photo: 'assets/photos/luis-sanchez.jpg', name: 'Luis Sánchez', position: 'Coordinador Técnico' },
+    ];*/
   }
+
 
   /**
    * Carga los retos destacados desde el backend.
