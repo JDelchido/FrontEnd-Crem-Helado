@@ -1,11 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { HomeService } from '../../services/home.service';
 
+
+interface Challenge {
+  id: number;
+  title: string;
+  description: string;
+}
+
+interface Worker {
+  id: number;
+  name: string;
+  avatar: string;
+}
 @Component({
   selector: 'app-pantalla-principal-solver-space',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
+  providers: [HomeService],
   templateUrl: './pantalla-principal-solver-space.component.html',
   styleUrl: './pantalla-principal-solver-space.component.css',
   animations: [
@@ -31,7 +46,62 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     ])
   ]
 })
-export class PantallaPrincipalSolverSpaceComponent {
+export class PantallaPrincipalSolverSpaceComponent implements OnInit {
+  workerName: string = 'Nombre del Trabajador'; // Esto también puede venir del backend
+  challenges: any[] = [];
+  users: any[] = [];
+
+  constructor(private homeService: HomeService) {}
+
+
+
+  ngOnInit(): void {
+    this.loadChallenges();
+    this.loadUsers();
+  }
+  /**
+   * Carga los retos destacados desde el backend.
+   */
+  loadChallenges(): void {
+    this.homeService.getChallenges().subscribe({
+      next: (data: any[]) => {
+        this.challenges = data;
+      },
+      error: (error: any) => {
+        console.error('Error al cargar los retos:', error);
+      },
+    });
+  }
+
+  /**
+   * Carga los usuarios destacados desde el backend.
+   */
+  loadUsers(): void {
+    this.homeService.getUsers().subscribe({
+      next: (data: any[]) => {
+        this.users = data;
+      },
+      error: (error: any) => {
+        console.error('Error al cargar los usuarios:', error);
+      },
+    });
+  }
+  viewChallenge(challengeId: number): void {
+    console.log(`Ver información del reto con ID: ${challengeId}`);
+    // Implementa navegación aquí
+  }
+
+  solveChallenge(challengeId: number): void {
+    console.log(`Solucionar reto con ID: ${challengeId}`);
+    // Implementa navegación aquí
+  }
+
+  createChallenge(): void {
+    console.log('Crear nuevo reto');
+    // Implementa navegación aquí
+  }
+
+
   fabState: 'open' | 'closed' = 'closed';
 
   features = [

@@ -1,1 +1,41 @@
-<p>pantalla-principal-solver-space works!</p>
+<div class="home-container">
+  <header class="home-header">
+    <h1>Solver Space</h1>
+  </header>
+
+  <main class="home-main">
+    <div class="welcome-message">
+      <h2>Bienvenido {{ workerName }} ¿listo para imaginar?</h2>
+    </div>
+
+    <section class="featured-challenges">
+      <h3>Retos destacados</h3>
+      <div class="challenge" *ngFor="let challenge of challenges">
+        <div class="challenge-info">
+          <h4>{{ challenge.title }}</h4>
+          <p>{{ challenge.description }}</p>
+        </div>
+        <div class="challenge-actions">
+          <button (click)="viewChallenge(challenge.id)" class="view-button">
+            Ver reto
+          </button>
+          <button (click)="solveChallenge(challenge.id)" class="solve-button">
+            Solucionar reto
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="featured-users">
+      <h3>Usuarios destacados</h3>
+      <div class="user" *ngFor="let user of users">
+        <h4>{{ user.name }}</h4>
+        <p>{{ user.contribution }}</p>
+      </div>
+    </section>
+  </main>
+
+  <button class="create-challenge-button" (click)="createChallenge()">
+    + Crear nuevo reto
+  </button>
+</div>
