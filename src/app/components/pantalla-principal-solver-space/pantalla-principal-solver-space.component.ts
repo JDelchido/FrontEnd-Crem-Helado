@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { HomeService } from '../../services/home.service';
 
-
 interface Challenge {
   id: number;
   title: string;
@@ -16,13 +15,14 @@ interface Worker {
   name: string;
   avatar: string;
 }
+
 @Component({
   selector: 'app-pantalla-principal-solver-space',
   standalone: true,
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule, RouterModule],
   providers: [HomeService],
   templateUrl: './pantalla-principal-solver-space.component.html',
-  styleUrl: './pantalla-principal-solver-space.component.css',
+  styleUrls: ['./pantalla-principal-solver-space.component.css'], // Corrección aquí
   animations: [
     trigger('cardHover', [
       state('normal', style({
@@ -53,12 +53,11 @@ export class PantallaPrincipalSolverSpaceComponent implements OnInit {
 
   constructor(private homeService: HomeService) {}
 
-
-
   ngOnInit(): void {
     this.loadChallenges();
     this.loadUsers();
   }
+
   /**
    * Carga los retos destacados desde el backend.
    */
@@ -86,6 +85,7 @@ export class PantallaPrincipalSolverSpaceComponent implements OnInit {
       },
     });
   }
+
   viewChallenge(challengeId: number): void {
     console.log(`Ver información del reto con ID: ${challengeId}`);
     // Implementa navegación aquí
@@ -100,7 +100,6 @@ export class PantallaPrincipalSolverSpaceComponent implements OnInit {
     console.log('Crear nuevo reto');
     // Implementa navegación aquí
   }
-
 
   fabState: 'open' | 'closed' = 'closed';
 
